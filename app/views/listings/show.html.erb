@@ -8,22 +8,34 @@
     <h3><%= @listing.name %></h3>
     <p><%= number_to_currency(@listing.price) %></p>
     <p><%= @listing.description %></p>
+
+    <h3>Reviews</h3>
+
+    <% if @reviews.blank? %>
+      <h3 class="text-center">No reviews yet. Be the first to write one!
+        &nbsp;<%= link_to 'Write Review', new_listing_review_path(@listing), class: "btn btn-primary" %></h3>
+      <% else %>
+    <% @reviews.each do |review| %>
+    <p><div class="star-rating" data-score= <%= review.rating %> ></div></p>
+      <p class="comment"><%= review.comment %></p>
+    <% end %>
+    <% end %>
   </div>
 </div>
 
 <%= link_to 'Edit', edit_listing_path(@listing), class: "btn btn-link" %>
 <%= link_to 'Back', listings_path, class: "btn btn-link" %>
 
-<div class="row">
-  <div class="col-md-12">
-    <% if @reviews.blank? %>
-      <h3 class="text-center">No reviews yet. Be the first to write one!
-        &nbsp;<%= link_to 'Write Review', new_listing_review_path(@listing), class: "btn btn-primary" %></h3>
-      <% else %>
-    <% @reviews.each do |review| %>
-      <p><%= review.rating %></p>
-      <p><%= review.comment %></p>
-    <% end %>
-    <% end %>
-  </div>
-  </div>
+  <script>
+    $('.star-rating').raty({
+      starOff: 'https://dl.dropbox.com/s/a3qo7edr7kljtg9/star-off.png',
+      starOn: 'https://dl.dropbox.com/s/aa9cvcklzogag9o/star-on.png',
+      starHalf: 'https://dl.dropbox.com/s/wlel79korgp19sz/star-half.png',
+      halfShow: true,
+      half: true,
+      readOnly: true,
+      score: function(){
+        return $(this).attr('data-score');
+      }
+    });
+  </script>
