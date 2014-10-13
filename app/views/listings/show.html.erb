@@ -6,18 +6,23 @@
   </div>
   <div class="col-md-6">
     <h3><%= @listing.name %></h3>
+    <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+    <p><%= "#{@reviews.length} reviews" %></p>
     <p><%= number_to_currency(@listing.price) %></p>
     <p><%= @listing.description %></p>
 
-    <h3>Reviews</h3>
+    <h4>Reviews</h4>
 
+    <%= link_to 'Write Review', new_listing_review_path(@listing), class: "btn btn-primary" %>
+
+    <p class="comment">
     <% if @reviews.blank? %>
       <h3 class="text-center">No reviews yet. Be the first to write one!
         &nbsp;<%= link_to 'Write Review', new_listing_review_path(@listing), class: "btn btn-primary" %></h3>
       <% else %>
     <% @reviews.each do |review| %>
     <p><div class="star-rating" data-score= <%= review.rating %> ></div></p>
-      <p class="comment"><%= review.comment %></p>
+      <%= h(review.comment).gsub(/\n/, '<br/>').html_safe %></p>
     <% end %>
     <% end %>
   </div>

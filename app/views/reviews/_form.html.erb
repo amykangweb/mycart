@@ -11,15 +11,23 @@
     </div>
   <% end %>
 
+  <div id="star-rating"></div>
+
   <div class="form-group">
-    <%= f.label :rating %>
-    <%= f.number_field :rating, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :comment %>
     <%= f.text_area :comment, class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
+
+<script>
+    $('#star-rating').raty({
+      starOff: 'https://dl.dropbox.com/s/a3qo7edr7kljtg9/star-off.png',
+      starOn: 'https://dl.dropbox.com/s/aa9cvcklzogag9o/star-on.png',
+      starHalf: 'https://dl.dropbox.com/s/wlel79korgp19sz/star-half.png',
+      halfShow: true,
+      half: true,
+      scoreName: 'review[rating]'
+    });
+  </script>
