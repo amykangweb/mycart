@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :orders
+
   resources :listings do
     resources :reviews, except: [:show, :index]
+    resources :orders
   end
 
   devise_for :users

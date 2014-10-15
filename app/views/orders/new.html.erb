@@ -1,0 +1,11 @@
+<h1>New order</h1>
+
+<h4><%= @listing.name %></h4>
+
+<p><%= number_to_currency(@listing.price) %></p>
+
+<p><%= image_tag @listing.image.url(:thumb) %></p>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', listing_path(@listing) %>
