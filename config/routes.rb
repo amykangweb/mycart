@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :listings do
+    collection do
+      get 'search'
+    end
     resources :reviews, except: [:show, :index]
     resources :orders
   end

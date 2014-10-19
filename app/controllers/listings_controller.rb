@@ -18,6 +18,14 @@ class ListingsController < ApplicationController
       end
   end
 
+  def search
+    if params[:search].present?
+      @listings = Listing.search(params[:search])
+    else
+      @listings = Listing.all
+    end
+  end
+
   # GET /listings/new
   def new
     @listing = Listing.new
