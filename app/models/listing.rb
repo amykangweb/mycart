@@ -12,6 +12,7 @@ class Listing < ActiveRecord::Base
 	default_scope -> {order('created_at DESC')}
 	validates :name, :description, :price, presence: true
 	validates :price, numericality: { greater_than: 0 }
+	validates :description, presence: true, length: {maximum: 200}
 	validates_attachment_presence :image
 
 	belongs_to :user
