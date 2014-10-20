@@ -10,4 +10,5 @@ class Review < ActiveRecord::Base
 		less_than_or_equal_to: 5,
 		message: "can only be a whole number between 1 and 5"
 	}
+	validates :user_id, uniqueness: {:scope => :listing_id, message: "may only write one review per listing"}
 end

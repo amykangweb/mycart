@@ -1,7 +1,7 @@
 <%= form_for([@listing, @review]) do |f| %>
   <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+    <div id="error_explanation" class="alert alert-danger alert-dismissable">
+      <h4><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h4>
 
       <ul>
       <% @review.errors.full_messages.each do |message| %>
@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div id="star-rating"></div>
+  <p><div id="star-rating"></div></p>
 
   <div class="form-group">
     <%= f.text_area :comment, class: "form-control" %>
@@ -26,8 +26,6 @@
       starOff: 'https://dl.dropbox.com/s/a3qo7edr7kljtg9/star-off.png',
       starOn: 'https://dl.dropbox.com/s/aa9cvcklzogag9o/star-on.png',
       starHalf: 'https://dl.dropbox.com/s/wlel79korgp19sz/star-half.png',
-      halfShow: true,
-      half: true,
       scoreName: 'review[rating]'
     });
   </script>
