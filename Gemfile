@@ -30,6 +30,8 @@ gem 'figaro'
 gem 'devise'
 
 gem 'searchkick'
+
+gem 'will_paginate', '~> 3.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 group :doc do
 	gem 'sdoc', require: false

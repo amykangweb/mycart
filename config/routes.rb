@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get 'search'
     end
     resources :reviews, except: [:show, :index]
-    resources :orders
+    resources :orders, only: [:new, :create]
   end
 
   devise_for :users

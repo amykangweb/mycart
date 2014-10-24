@@ -16,7 +16,7 @@
       <td class="center"><%= image_tag order.listing.image.url(:thumb) %></td>
       <td class="center"><%= order.listing.name %></td>
       <td class="center"><%= number_to_currency(order.listing.price) %></td>
-      <td class="center"><%= order.buyer.name %></td>
+      <td class="center"><%= order.buyer.first_name %></td>
       <td class="center"><%= order.created_at.strftime("%B %-d, %Y") %></td>
       <td>
         <div class="btn-group">
@@ -33,6 +33,8 @@
     </tr>
   <% end %>
 </table>
+
+<%= will_paginate %>
 
 <br>
 
