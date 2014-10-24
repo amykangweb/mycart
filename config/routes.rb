@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   root 'listings#index'
 
+  match '/seller', to: 'listings#seller', via: 'get'
+  match '/sales', to: 'orders#sales', via: 'get'
+  match '/purchases', to: 'orders#purchases', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
